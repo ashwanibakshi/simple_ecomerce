@@ -1,0 +1,69 @@
+<%-include('../partial/header')%>
+ 	<div class="span12">
+    <ul class="breadcrumb">
+		<li><a href="#">DashBoard</a> <span class="divider">/</span></li>
+		<li class="active">AddItems</li>
+    </ul>
+<div class="well well-small">
+<hr class="soft"/>
+	<h2>AddItems </h2><br/>
+	
+	<form class="bs-docs-example form-horizontal" action="/product/addItem" method="post" enctype="multipart/form-data">
+            <div class="control-group">
+              <label class="control-label">Upload Image</label>
+              <div class="controls">
+                <input type="file" name="pic" multiple required>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Product Name</label>
+              <div class="controls">
+                <input type="text" name="prodname" required>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Category Type</label>
+              <div class="controls">
+                <select name="category" required>
+                  <option value="">-select category-</option>
+                  <option value="menwear">menwear</option>
+                  <option value="womanwear">womanwear</option>
+                  <option value="kids">kids</option>
+                  <option value="shoes">shoes</option>
+                  <option value="homedecor">homedecor</option>
+                </select>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Brand</label>
+              <div class="controls">
+                <input type="text" name="brand" required>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Color</label>
+              <div class="controls">
+                <input type="text" name="color" required>
+              </div>
+            </div>
+            <div class="control-group col-md-6">
+              <label class="control-label">Description</label>
+              <div class="controls">
+                <!-- <input type="" name="desc"> -->
+                <textarea name="desc" cols=15 rows=4 required></textarea>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" >Price</label>
+              <div class="controls">
+                <input type="text" name="price" required>
+              </div>
+            </div>
+            <div class="control-group text-center">
+              <button type="submit">Add</button>
+            </div>
+          </form>
+</div>
+</div>
+</div>
+<%-include('../partial/footer')%>

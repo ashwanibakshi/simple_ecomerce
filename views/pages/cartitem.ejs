@@ -1,0 +1,79 @@
+<%-include('../partial/header')%>
+<!-- 
+Body Section 
+-->
+<div class="span12">
+    <ul class="breadcrumb">
+		<li><a href="#">Product</a> <span class="divider">/</span></li>
+		<li class="active">Cart Items</li>
+    </ul>
+<div class="well well-small">
+<hr class="soft"/>
+	<h2>ShowItems </h2><br/>
+	 
+    <table class="table table-bordered table-condensed" id="tables">
+        <thead>
+          <tr>
+            <th>S.no</th>
+            <th>Product</th>
+            <th>Brand</th>
+            <th>Unit price</th>
+            <th>Qty </th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%for(var x = 0;x< data.length;x++){%>
+          <tr class="itemTr">
+            <td><%= x+1%></td>
+            <td><img src='<%= data[x].cartItem[0].pic1%>' alt="image" style="width:150px; height:200px;" width="100" height="100"></td>
+            <td><%= data[x].cartItem[0].brand%></td>
+             <td><span class="unitPrice">Rs.<%= data[x].cartItem[0].price%></span></td>
+             <td>
+                <input class="span1 quant" style="max-width:34px" placeholder="1" size="16" type="text" value="<%= data[x].quantity%>">
+              <div class="input-append">
+                <button class="btn btn-mini minus" type="button">-</button><button class="btn btn-mini plus" type="button"> + </button><button class="btn btn-mini btn-danger danger" type="button"><span class="icon-remove"></span></button>
+            </div>
+            </td> 
+            <td><span class="totPrice">Rs.<%= data[x].cartItem[0].price  *  data[x].quantity %></span></td>
+            <input type="hidden" class="itemid" value="<%= data[x]._id%>">
+          </tr>
+          <%}%>
+          </tbody>
+      </table><br/>
+      <div class="text-center pagination">
+        <% if (pages > 0) { %>
+        <ul class="pagination">
+          <% if (current == 1) { %>
+            <li class="page-item disabled"><a class="page-link">First</a></li>
+        <% } else { %>
+            <li><a class="page-link" href="/product/cart?page=1">First</a></li>
+        <% } %>
+        <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+        <% if (i !== 1) { %>
+            <li class="page-item disabled"><a>...</a></li>
+        <% } %>
+        <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+            <% if (i == current) { %>
+                <li class="page-item active"><a class="page-link"><%= i %></a></li>
+            <% } else { %>
+                <li><a class="page-link" href="/product/cart?page=<%= i %>"><%= i %></a></li>
+            <% } %>
+            <% if (i == Number(current) + 4 && i < pages) { %>
+                <li class="page-item disabled"><a class="page-link">...</a></li>
+            <% } %>
+        <% } %>
+        <% if (current == pages) { %>
+            <li class="page-item disabled"><a class="page-link">Last</a></li>
+        <% } else { %>
+            <li><a class="page-link" href="/product/cart?page=<%= pages %>">Last</a></li>
+        <% } %>
+        </ul>
+        <% } %>
+      </div> 
+
+    </div>
+  </div>
+</div>
+
+<%-include('../partial/footer')%>

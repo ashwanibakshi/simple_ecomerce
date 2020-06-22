@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Twitter Bootstrap shopping cart</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Bootstrap styles -->
+    <link href="/assets/css/bootstrap.css" rel="stylesheet"/>
+    <!-- Customize styles -->
+    <link href="/style.css" rel="stylesheet"/>
+    <!-- font awesome styles -->
+	<link href="/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
+		<!--[if IE 7]>
+			<link href="css/font-awesome-ie7.min.css" rel="stylesheet">
+		<![endif]-->
+
+		<!--[if lt IE 9]>
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+
+	<!-- Favicons -->
+    <link rel="shortcut icon" href="/assets/ico/favicon.ico">
+  </head>
+<body>
+    <!-- 
+	Upper Header Section 
+-->
+<%if(role!='admin'){%>
+<div class="navbar navbar-inverse navbar-fixed-top">
+	<div class="topNav">
+		<div class="container">
+			<div class="alignR">
+				<div class="pull-left socialNw">
+					<a href="#"><span class="icon-twitter"></span></a>
+					<a href="#"><span class="icon-facebook"></span></a>
+					<a href="#"><span class="icon-youtube"></span></a>
+					<a href="#"><span class="icon-tumblr"></span></a>
+				</div>
+				<a class="" href="/product/index"> <span class="icon-home"></span> Home</a> 
+				<!-- <a href="#"><span class="icon-user"></span> My Account</a>  -->
+				
+				<%if(!role){%>
+				<a href="/user/register"><span class="icon-edit"></span> Free Register </a>
+				<%}%> 
+				
+				<a href="#"><span class="icon-envelope"></span> Contact us</a>
+			  <%if(role=='customer'){%>
+				<a href="/product/cart"><span class="icon-shopping-cart"></span> Item(s)</a>
+			  <%}%>
+			</div>
+		</div>
+	</div>
+</div>
+<%}%>
+
+<!--
+Lower Header Section 
+-->
+<div class="container">
+<div id="gototop"> </div>
+<%if(role!='admin'){%>
+<header id="header">
+<div class="row">
+	<div class="span4">
+	<h1>
+	<a class="logo" href="/product/index"><span>Twitter Bootstrap ecommerce template</span> 
+		<img src="/assets/img/logo-bootstrap-shoping-cart.png" alt="bootstrap shop">
+	</a>
+	</h1>
+	</div>
+	<div class="span4">
+	<div class="offerNoteWrapper">
+	<h1 class="dotmark">
+	<i class="icon-cut"></i>
+	Twitter Bootstrap shopping cart HTML template is available @ $14
+	</h1>
+	</div>
+	</div>
+	<div class="span4 alignR">
+	<p><br> <strong> Support (24/7) :  0800 1234 678 </strong><br><br></p>
+	<!-- <span class="btn btn-mini">[ 2 ] <span class="icon-shopping-cart"></span></span>
+	<span class="btn btn-warning btn-mini">$</span>
+	<span class="btn btn-mini">&pound;</span>
+	<span class="btn btn-mini">&euro;</span> -->
+	</div>
+</div>
+</header>
+
+<!-- Navigation Bar Section -->
+
+<div class="navbar">
+	  <div class="navbar-inner">
+		<div class="container">
+		  <a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		  </a>
+		  <div class="nav-collapse">
+			<ul class="nav">
+			  <li><a href="/product/index">Home	</a></li>
+			  <li><a href="/product/searchItem?finditem=menwear">Mens Wear</a></li>
+			  <li><a href="/product/searchItem?finditem=womanwear">Womans Wear</a></li>
+			  <li><a href="/product/searchItem?finditem=kidwear">Kids Wear </a></li>
+			  <li><a href="/product/searchItem?finditem=shoes">Shoes</a></li>
+			  <li><a href="/product/searchItem?finditem=housedecor">HouseDecoration</a></li>
+			</ul>
+			<form action="/product/searchItem" class="navbar-search pull-left">
+			  <input type="text" name="finditem" placeholder="menwear womanwear...." class="search-query span2">
+			</form>
+			<ul class="nav pull-right">
+				<%if(!role){%>
+			<li class="dropdown">
+				<a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="icon-lock"></span> Login <b class="caret"></b></a>
+				<div class="dropdown-menu">
+				<form class="form-horizontal loginFrm" action="/user/login" method="post">
+				  <div class="control-group">
+					<input type="text" class="span2" id="inputEmail" placeholder="Email" name="email">
+				  </div>
+				  <div class="control-group">
+					<input type="password" class="span2" id="inputPassword" placeholder="Password" name="password">
+				  </div>
+				  <div class="control-group">
+					<label class="checkbox">
+					<input type="checkbox"> Remember me
+					</label>
+					<button type="submit" class="btn-block">Sign in</button>
+				  </div>
+				</form>
+				</div>
+			</li>
+			<%}else{%>
+			 <li><a href="/user/logout">Logout</a></li>
+			<%}%>
+			</ul>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	<%}else{%>
+		<div class="navbar">
+			<div class="navbar-inner">
+			  <div class="container">
+				<a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar">
+				  <span class="icon-bar"></span>
+				  <span class="icon-bar"></span>
+				  <span class="icon-bar"></span>
+				</a>
+				<div class="nav-collapse">
+				  <ul class="nav">
+					<li class=""><a href="/product/addItem">AddItem</a></li>
+					<li class=""><a href="/product/showItem">ShowItem</a></li>
+					<li class=""><a href="/user/logout">LogOut</a></li>
+				  </ul>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		<%}%>
+
+<!-- Body Section -->

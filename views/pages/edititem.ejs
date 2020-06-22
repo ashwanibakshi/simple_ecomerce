@@ -1,0 +1,66 @@
+<%-include('../partial/header')%>
+
+ 	<div class="span12">
+    <ul class="breadcrumb">
+		<li><a href="#">DashBoard</a> <span class="divider">/</span></li>
+		<li class="active">UpdateItem</li>
+    </ul>
+<div class="well well-small">
+<hr class="soft"/>
+	<br/>
+	<%if(data.length){%>
+	<form class="bs-docs-example form-horizontal" action="/product/editItem" method="post">
+            <!-- <div class="control-group">
+              <label class="control-label">Upload Image</label>
+              <div class="controls">
+                <input type="file" name="pic" required>
+              </div>
+            </div> -->
+            <div class="control-group">
+              <label class="control-label">Product Name</label>
+              <div class="controls">
+                <input type="text" name="prodname" value="<%= data[0].itemName%>" required>
+              </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Category</label>
+                <div class="controls">
+                  <input type="text" name="category" value="<%= data[0].category%>" required>
+                </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Brand</label>
+              <div class="controls">
+                <input type="text" name="brand" value="<%= data[0].brand%>" required>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Color</label>
+              <div class="controls">
+                <input type="text" name="color" value="<%= data[0].color%>" required>
+              </div>
+            </div>
+            <div class="control-group col-md-6">
+              <label class="control-label">Description</label>
+              <div class="controls">
+                <!-- <input type="" name="desc"> -->
+                <textarea name="desc" cols=15 rows=4 required><%= data[0].desc%></textarea>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" >Price</label>
+              <div class="controls">
+                <input type="text" name="price" value="<%= data[0].price%>" required>
+              </div>
+            </div>
+            <input type="hidden" value="<%= data[0]._id%>" name="id">
+            <div class="control-group text-center">
+              <button type="submit">Update</button>
+            </div>
+          </form>
+    <%}%>
+</div>
+</div>
+</div>
+<%-include('../partial/footer')%>
+ 
